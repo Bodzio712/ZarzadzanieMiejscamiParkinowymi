@@ -1,6 +1,7 @@
 #Libraries
 import RPi.GPIO as GPIO
 import time
+import psycopg2
 
 #GPIO Mode (BOARD / BCM)
 GPIO.setmode(GPIO.BCM)
@@ -60,6 +61,17 @@ if __name__ == '__main__':
                 free=free+1
 
             print("Wolne miejsca = %", free)
+
+            connection = psycopg2.connect(user="piotr",
+                                        password="windows7",
+                                        host="127.0.0.1",
+                                        port="5432",
+                                        database="pgs")
+            cursor=connection.cursor()
+            query = """INSERT INTO data (number) VALUES (%s)"""
+            cursor.execute(query, (free, ))
+            connection.commit()
+
             time.sleep(1)
 
         # Reset by pressing CTRL + C
