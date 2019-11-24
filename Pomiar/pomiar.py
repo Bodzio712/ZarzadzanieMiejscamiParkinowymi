@@ -20,6 +20,17 @@ GPIO.setup(GPIO_ECHO1, GPIO.IN)
 GPIO.setup(GPIO_TRIGGER2, GPIO.OUT)
 GPIO.setup(GPIO_ECHO2, GPIO.IN)
 
+def insert(number):
+    connection = psycopg2.connect(user="piotr",
+                                        password="windows7",
+                                        host="127.0.0.1",
+                                        port="5432",
+                                        database="pgs")
+    cursor=connection.cursor()
+    query = """INSERT INTO data (number) VALUES (%s)"""
+    cursor.execute(query, (free, ))
+    connection.commit()
+
 def distance(GPIO_TRIGGER, GPIO_ECHO):
     # set Trigger to HIGH
     GPIO.output(GPIO_TRIGGER, True)
@@ -62,15 +73,7 @@ if __name__ == '__main__':
 
             print("Wolne miejsca = %", free)
 
-            connection = psycopg2.connect(user="piotr",
-                                        password="windows7",
-                                        host="127.0.0.1",
-                                        port="5432",
-                                        database="pgs")
-            cursor=connection.cursor()
-            query = """INSERT INTO data (number) VALUES (%s)"""
-            cursor.execute(query, (free, ))
-            connection.commit()
+            insert(free)
 
             time.sleep(1)
 
