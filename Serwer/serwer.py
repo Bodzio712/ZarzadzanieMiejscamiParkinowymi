@@ -3,6 +3,7 @@ from flask import Flask, jsonify, render_template
 import psycopg2
 
 app = Flask(__name__)
+app.run(host='0.0.0.0')
 
 def select_one():
     connection = psycopg2.connect(user="piotr",

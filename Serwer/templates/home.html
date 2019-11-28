@@ -1,10 +1,32 @@
-<html>
-	<head>
-		<title>Parking Managment System</title>
-	</head>
-	<body>
-		<h1>Licznik wolnych miejsc parkingowych</h1>
-		Wolnych miejs parkingowych: {{ number }}
-		Sprawdzone o {{ date }}
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+    <link href="../static/css/bootstrap.css" rel="stylesheet"/>
+    <link href="../static/js/bootstrap.js" rel="script"/>
+</head>
+<body>
+    <div id="content">
+        <div class="jumbotron text-center bg-dark text-white">
+            <h1>Parking Management System</h1>
+        </div>
+        <div class="jumbotron text-center bg-dark text-white">
+            <h2>Free parking spaces</h2>
+	    <h1><b>{{number}}</b></h1>
+        </div>
+        <div class="jumbotron text-center bg-dark text-white">
+            <h2>Localization</h2>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2444.220911355889!2d21.0084310313594!3d52.221204160319076!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecceb85eccf13%3A0x861fad4323f27152!2sWydzia%C5%82%20Elektryczny%20Politechniki%20Warszawskiej!5e0!3m2!1spl!2spl!4v1574891280605!5m2!1spl!2spl" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+        </div>
+        <div class="jumbotron text-center bg-dark text-white">
+            <h2>About parking</h2>
+            <p>Max parking spaces: 80</p>
+            <p></p>
+        </div>
+    </div>
+    <footer class="container-fluid text-center bg-dark text-white">
+        <small>2019 &copy; Piotr Pogodziński</small>
+    </footer>
+</body>
 </html>
