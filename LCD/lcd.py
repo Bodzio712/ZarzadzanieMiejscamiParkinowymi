@@ -2,6 +2,13 @@ import i2c_lcd as lcd
 import time
 import psycopg2
 
+from signal import signal, SIGINT
+from sys import exit
+
+def handler(signal_received, frame):
+    GPIO.cleanup()
+    exit(0)
+
 def select_last():
     connection = psycopg2.connect(user="piotr",
             password="windows7",
@@ -24,6 +31,9 @@ def main():
         time.sleep(5)
 
 if __name__ == "__main__":
+    # Look for SIGINT
+    signal(SIGINT, handler)
+    
     try:
         main()
     except KeyboardInterrupt:
