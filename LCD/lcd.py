@@ -17,9 +17,10 @@ def select_last():
 
 def main():
     while True:
-
+        number = select_last()
         lcd.clear()
-        lcd.lcd_string("Liczba wolnych miejsc:", lcd.LCD_LINE_1)
+        lcd.lcd_string("Wolne miejsca:", lcd.LCD_LINE_1)
+        lcd.lcd_string(str(number[0]), lcd.LCD_LINE_2)
         time.sleep(5)
 
 if __name__ == "__main__":

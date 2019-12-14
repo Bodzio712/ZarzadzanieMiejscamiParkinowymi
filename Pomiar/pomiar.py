@@ -3,6 +3,13 @@ import RPi.GPIO as GPIO
 import time
 import psycopg2
 
+from signal import signal, SIGINT
+from sys import exit
+
+def handler(signal_received, frame):
+    GPIO.cleanup()
+    exit(0)
+
 #GPIO Mode (BOARD / BCM)
 GPIO.setmode(GPIO.BCM)
 
@@ -61,6 +68,9 @@ def distance(GPIO_TRIGGER, GPIO_ECHO):
     return distance
 
 if __name__ == '__main__':
+    # Look for SIGINT
+    signal(SIGINT, handler)
+
     try:
         while True:
             dist1 = distance(GPIO_TRIGGER1, GPIO_ECHO1)
