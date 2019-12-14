@@ -6,7 +6,7 @@ from signal import signal, SIGINT
 from sys import exit
 
 def handler(signal_received, frame):
-    GPIO.cleanup()
+    lcd.lcd_byte(0x01, lcd.LCD_CMD)
     exit(0)
 
 def select_last():
