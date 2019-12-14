@@ -28,7 +28,7 @@ def main():
         lcd.clear()
         lcd.lcd_string("Wolne miejsca:", lcd.LCD_LINE_1)
         lcd.lcd_string(str(number[0]), lcd.LCD_LINE_2)
-        time.sleep(5)
+        time.sleep(0.1)
 
 if __name__ == "__main__":
     # Look for SIGINT
